@@ -1,10 +1,12 @@
 const express = require('express');
 const fs = require('fs');
-const mysql = require('mysql')
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 
 // read credentials
-let credentials = JSON.parse(fs.readFileSync('credentials.json'));
+credentials = JSON.parse(fs.readFileSync('credentials.json'));
 console.log('Reading credentials successful')
 
 connection = mysql.createConnection({
@@ -24,9 +26,18 @@ connection.connect((err) => {
 	}
 });
 
+logins = []
 
 app = express();
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser())
 
+
+
+let loginRoute = require('./routes/login')
+let homeRoute = require('./routes/home')
 
 let port = 8082;
 app.listen(port, () => {
