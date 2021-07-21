@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node websiteDashboard.js",
+    "start": "node-sass ./sass -o ./assets/css/; node websiteDashboard.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +23,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
+    "sass": "^1.35.2",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.11"
   }

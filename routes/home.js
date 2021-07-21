@@ -1,7 +1,7 @@
+const CheckLogin = require('../checkLogin')
+
 app.get('/home', (req, res) => {
-    if (!logins.includes(req.cookies.session)) {
-        res.redirect('/login')
-    } 
+    CheckLogin.checkLogin(req, res)
     res.send('test')
     
 })
